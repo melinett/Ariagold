@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>آریا گلد</title>
+<style>
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
+:root{--gold:#C9980A;--gl2:#F0C040;--gd:#0D3B26;--gl:#1E7A4E;--bg:#F7F4EE;--sf:#fff;--tx:#1A1A1A;--mu:#6B6560;--bb:#EAF5EE;--bt:#0D5C2E;--sb:#FDECEA;--st:#9B1C1C;--br:#E0DAD0;--r:12px;--rs:7px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Vazirmatn',Tahoma,sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;}
+#ls{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,var(--gd),#0A2E1C);padding:20px;}
+.lc{background:var(--sf);border-radius:20px;padding:36px 28px;width:100%;max-width:340px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.35);}
+.ll{width:68px;height:68px;background:var(--gd);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:22px;font-weight:700;color:var(--gl2);}
+.lt{font-size:18px;font-weight:700;color:var(--gd);margin-bottom:4px;}
+.ls2{font-size:12px;color:var(--mu);margin-bottom:20px;}
+.ltabs{display:flex;background:#f0ede6;border-radius:8px;overflow:hidden;margin-bottom:18px;}
+.ltab{flex:1;padding:9px;text-align:center;font-size:13px;cursor:pointer;color:var(--mu);border:none;background:none;font-family:inherit;}
+.ltab.a{background:var(--gd);color:#fff;font-weight:700;}
+.lf{margin-bottom:11px;text-align:right;}
+.lf label{display:block;font-size:11px;color:var(--mu);margin-bottom:3px;}
+.lf input{width:100%;padding:11px 13px;border:1.5px solid var(--br);border-radius:var(--rs);font-family:inherit;font-size:14px;text-align:center;outline:none;color:var(--tx);background:var(--bg);}
+.lf input:focus{border-color:var(--gl);}
+.lbtn{width:100%;padding:13px;background:var(--gd);color:#fff;border:none;border-radius:var(--rs);font-family:inherit;font-size:15px;font-weight:500;cursor:pointer;margin-top:4px;}
+.lbtn:hover{background:var(--gl);}
+.lerr{color:#c0392b;font-size:12px;margin-top:9px;min-height:16px;}
+#app{display:none;flex-direction:column;min-height:100vh;}
+.ah{background:var(--gd);color:#fff;padding:11px 14px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.25);}
+.alc{width:34px;height:34px;background:rgba(201,152,10,.2);border:1.5px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--gl2);margin-left:9px;}
+.am{font-size:13px;font-weight:700;}
+.as2{font-size:10px;opacity:.7;}
+.ahr{display:flex;align-items:center;gap:7px;}
+.ut{font-size:10px;opacity:.6;}
+.ob{background:rgba(255,255,255,.1);border:.5px solid rgba(255,255,255,.2);color:#fff;border-radius:6px;padding:5px 9px;font-size:11px;cursor:pointer;font-family:inherit;}
+.nav{display:flex;background:rgba(0,0,0,.2);border-radius:7px;overflow:hidden;}
+.nt{padding:5px 9px;font-size:11px;cursor:pointer;color:rgba(255,255,255,.6);font-family:inherit;border:none;background:none;}
+.nt.a{background:var(--gold);color:var(--gd);font-weight:700;}
+.cnt{flex:1;padding:11px;max-width:520px;margin:0 auto;width:100%;}
+.sec{background:var(--sf);border-radius:var(--r);margin-bottom:11px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.06);}
+.sh{background:var(--gd);color:var(--gl2);padding:8px 13px;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:space-between;}
+.sd{width:7px;height:7px;background:var(--gl2);border-radius:50%;animation:pu 2s infinite;}
+@keyframes pu{0%,100%{opacity:1}50%{opacity:.3}}
+.ch{display:grid;padding:5px 13px;background:#F0EDE6;font-size:10px;color:var(--mu);font-weight:500;}
+.ch.c3{grid-template-columns:1.3fr 1fr 1fr;}
+.ch span{text-align:center;}
+.ch span:first-child{text-align:right;}
+.pr{display:grid;padding:8px 13px;border-bottom:.5px solid var(--br);align-items:center;cursor:pointer;transition:background .12s;}
+.pr:last-child{border-bottom:none;}
+.pr.c3{grid-template-columns:1.3fr 1fr 1fr;}
+.pr:hover{background:#f8f6f2;}
+.rn{font-size:12px;line-height:1.5;}
+.pi{border-radius:6px;padding:5px 3px;text-align:center;font-size:11px;font-weight:500;}
+.pi.b{background:var(--bb);color:var(--bt);}
+.pi.s{background:var(--sb);color:var(--st);}
+.pi.n{background:var(--sb);color:var(--st);font-size:10px;}
+/* MODAL */
+.mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:200;align-items:flex-end;justify-content:center;}
+.mo.op{display:flex;}
+.mb{background:var(--sf);border-radius:20px 20px 0 0;width:100%;max-width:480px;padding:22px 18px 30px;}
+.mti{font-size:15px;font-weight:700;color:var(--gd);margin-bottom:3px;}
+.mpi{font-size:12px;color:var(--mu);margin-bottom:16px;}
+.mts{display:flex;background:#f0ede6;border-radius:8px;overflow:hidden;margin-bottom:14px;}
+.mt{flex:1;padding:8px;text-align:center;font-size:12px;cursor:pointer;color:var(--mu);border:none;background:none;font-family:inherit;}
+.mt.a{background:var(--gd);color:#fff;font-weight:700;}
+.cl{font-size:11px;color:var(--mu);margin-bottom:3px;}
+.ci{width:100%;padding:10px 13px;border:1.5px solid var(--br);border-radius:var(--rs);font-family:inherit;font-size:16px;text-align:center;outline:none;color:var(--tx);background:var(--bg);margin-bottom:10px;}
+.ci:focus{border-color:var(--gl);}
+.cr{background:var(--bb);border-radius:var(--rs);padding:13px;text-align:center;margin-bottom:14px;}
+.crl{font-size:11px;color:var(--bt);margin-bottom:3px;}
+.crv{font-size:22px;font-weight:700;color:var(--bt);}
+.cbs{display:flex;gap:8px;}
+.cc{flex:1;padding:12px;background:var(--gd);color:#fff;border:none;border-radius:var(--rs);font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;}
+.cx{padding:12px 18px;background:#f0ede6;color:var(--mu);border:none;border-radius:var(--rs);font-family:inherit;font-size:14px;cursor:pointer;}
+/* ADMIN EDIT */
+.ai{border-bottom:.5px solid var(--br);padding:11px 13px;}
+.ai:last-child{border-bottom:none;}
+.ain{font-size:12px;font-weight:700;color:var(--gd);margin-bottom:6px;}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:7px;}
+.fl{font-size:10px;color:var(--mu);margin-bottom:2px;}
+.ainp{width:100%;border:1px solid var(--br);border-radius:6px;padding:7px;font-family:inherit;font-size:12px;text-align:center;background:var(--bg);color:var(--tx);outline:none;}
+.ainp:focus{border-color:var(--gl);background:#fff;}
+.nsb{padding:7px;text-align:center;font-size:11px;color:var(--mu);border:1px solid var(--br);border-radius:6px;background:var(--bg);}
+.ar{display:flex;align-items:center;gap:6px;}
+.ala{font-size:10px;color:var(--mu);flex:1;}
+.abtn{border:none;border-radius:7px;width:40px;height:34px;font-size:20px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .1s;}
+.abtn:active{transform:scale(.9);}
+.abtn.p{background:var(--bb);color:var(--bt);}
+.abtn.m{background:var(--sb);color:var(--st);}
+.ast{font-size:10px;color:var(--mu);min-width:58px;text-align:center;}
+.sw{padding:4px 0 14px;}
+.sb2{width:100%;padding:13px;background:var(--gd);color:#fff;border:none;border-radius:var(--rs);font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;}
+/* CUSTOMERS */
+.ch2{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;}
+.ct{font-size:14px;font-weight:700;color:var(--gd);}
+.acb{padding:8px 13px;background:var(--gd);color:#fff;border:none;border-radius:var(--rs);font-family:inherit;font-size:12px;cursor:pointer;}
+.cc2{background:var(--sf);border-radius:var(--r);padding:13px;margin-bottom:8px;box-shadow:0 2px 6px rgba(0,0,0,.06);display:flex;align-items:center;justify-content:space-between;}
+.cn{font-size:13px;font-weight:700;}
+.cu2{font-size:11px;color:var(--mu);}
+.cpw{font-size:11px;color:var(--bt);margin-top:2px;}
+.db{background:var(--sb);color:var(--st);border:none;border-radius:6px;padding:6px 10px;font-size:12px;cursor:pointer;font-family:inherit;}
+.fs{background:var(--sf);border-radius:var(--r);padding:15px;margin-bottom:11px;box-shadow:0 2px 6px rgba(0,0,0,.06);}
+.fti{font-size:13px;font-weight:700;color:var(--gd);margin-bottom:11px;}
+.fro{margin-bottom:9px;}
+.fla{font-size:11px;color:var(--mu);margin-bottom:3px;}
+.fin{width:100%;border:1px solid var(--br);border-radius:6px;padding:9px 11px;font-family:inherit;font-size:13px;background:var(--bg);color:var(--tx);outline:none;}
+.fin:focus{border-color:var(--gl);}
+.fb{width:100%;padding:10px;background:var(--gd);color:#fff;border:none;border-radius:var(--rs);font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;margin-top:4px;}
+/* TRANSACTIONS */
+.daysep{text-align:center;font-size:11px;color:var(--mu);padding:8px 0;font-weight:700;border-bottom:.5px solid var(--br);margin-bottom:8px;}
+.tsg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+.tsc{background:var(--sf);border-radius:var(--r);padding:14px;box-shadow:0 2px 6px rgba(0,0,0,.06);}
+.tsn{font-size:28px;font-weight:700;color:var(--gold);}
+.tsl{font-size:12px;color:var(--mu);}
+.tc{background:var(--sf);border-radius:var(--r);padding:13px;margin-bottom:8px;box-shadow:0 2px 6px rgba(0,0,0,.06);}
+.tt{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;}
+.tn{font-size:13px;font-weight:700;}
+.tty{border-radius:6px;padding:3px 9px;font-size:11px;font-weight:500;}
+.tty.buy{background:var(--bb);color:var(--bt);}
+.tty.sell{background:var(--sb);color:var(--st);}
+.tty.pending{background:#FFF9C4;color:#7B6200;}
+.tty.rejected{background:var(--sb);color:var(--st);}
+.td{font-size:11px;color:var(--mu);margin-bottom:2px;}
+.tda{font-size:10px;color:var(--mu);margin-top:3px;}
+.timer{font-size:12px;font-weight:700;color:var(--gold);margin-top:4px;}
+.tac{display:flex;gap:6px;margin-top:8px;}
+.tapb{flex:1;padding:8px;background:var(--gd);color:#fff;border:none;border-radius:6px;font-family:inherit;font-size:12px;font-weight:500;cursor:pointer;}
+.tarb{flex:1;padding:8px;background:var(--sb);color:var(--st);border:none;border-radius:6px;font-family:inherit;font-size:12px;cursor:pointer;}
+.te{text-align:center;padding:28px;color:var(--mu);font-size:13px;}
+/* PWD */
+.ps{background:var(--sf);border-radius:var(--r);padding:15px;margin-bottom:11px;box-shadow:0 2px 6px rgba(0,0,0,.06);}
+.pti{font-size:13px;font-weight:700;color:var(--gd);margin-bottom:11px;}
+.pr2{display:flex;gap:8px;margin-bottom:8px;align-items:center;}
+.pl{font-size:11px;color:var(--mu);min-width:85px;}
+.pi2{flex:1;border:1px solid var(--br);border-radius:6px;padding:7px 9px;font-family:inherit;font-size:12px;background:var(--bg);color:var(--tx);outline:none;}
+.psb{width:100%;padding:10px;background:#8B6914;color:#fff;border:none;border-radius:6px;font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;margin-top:4px;}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--gd);color:#fff;padding:10px 22px;border-radius:28px;font-size:13px;font-weight:500;box-shadow:0 4px 18px rgba(0,0,0,.3);opacity:0;transition:opacity .3s;pointer-events:none;z-index:999;}
+.toast.on{opacity:1;}
+.ft{text-align:center;padding:11px;font-size:10px;color:var(--mu);}
+.lov{position:fixed;inset:0;background:rgba(255,255,255,.88);display:flex;align-items:center;justify-content:center;z-index:300;font-size:14px;color:var(--gd);font-weight:500;}
+.badge{display:inline-block;background:#e53935;color:#fff;border-radius:10px;padding:1px 7px;font-size:10px;margin-right:4px;}
+</style>
+</head>
+<body>
+
+<div id="ls">
+  <div class="lc">
+    <div class="ll">AG</div>
+    <div class="lt">سامانه هوشمند آریا گلد</div>
+    <div class="ls2">برای ورود اطلاعات خود را وارد کنید</div>
+    <div class="ltabs">
+      <button class="ltab a" onclick="setLTab('c')">مشتری</button>
+      <button class="ltab" onclick="setLTab('a')">مدیر</button>
+    </div>
+    <div id="cf">
+      <div class="lf"><label>نام کاربری</label><input type="text" id="cu" placeholder="نام کاربری" /></div>
+      <div class="lf"><label>رمز عبور</label><input type="password" id="cp" placeholder="رمز عبور" onkeydown="if(event.key==='Enter')doLogin()" /></div>
+    </div>
+    <div id="af" style="display:none">
+      <div class="lf"><label>رمز مدیر</label><input type="password" id="ap" placeholder="رمز مدیر" onkeydown="if(event.key==='Enter')doLogin()" /></div>
+    </div>
+    <button class="lbtn" onclick="doLogin()">ورود</button>
+    <div class="lerr" id="le"></div>
+  </div>
+</div>
+
+<div id="app">
+  <div class="ah">
+    <div style="display:flex;align-items:center">
+      <div class="alc">AG</div>
+      <div><div class="am">آریا گلد</div><div class="as2" id="hs">قیمت لحظه‌ای</div></div>
+    </div>
+    <div class="ahr">
+      <div class="nav" id="anav" style="display:none">
+        <button class="nt a" onclick="sv('prices',this)">قیمت‌ها</button>
+        <button class="nt" onclick="sv('edit',this)">ویرایش</button>
+        <button class="nt" id="txBtn" onclick="sv('tx',this)">معاملات</button>
+        <button class="nt" onclick="sv('custs',this)">مشتریان</button>
+      </div>
+      <div class="nav" id="cnav" style="display:none">
+        <button class="nt a" onclick="sv('prices',this)">قیمت‌ها</button>
+        <button class="nt" onclick="sv('mytx',this)">معاملاتم</button>
+      </div>
+      <div class="ut" id="ut"></div>
+      <button class="ob" onclick="doLogout()">خروج</button>
+    </div>
+  </div>
+  <div class="cnt">
+    <div id="vp"></div>
+    <div id="ve" style="display:none"></div>
+    <div id="vtx" style="display:none"></div>
+    <div id="vc" style="display:none"></div>
+    <div id="vmt" style="display:none"></div>
+  </div>
+  <div class="ft">آریا گلد — تمامی حقوق محفوظ است</div>
+</div>
+
+<div class="mo" id="cm">
+  <div class="mb">
+    <div class="mti" id="cti"></div>
+    <div class="mpi" id="cpi"></div>
+    <div class="mts">
+      <button class="mt a" onclick="setCT('buy',this)">خرید از شما</button>
+      <button class="mt" onclick="setCT('sell',this)">فروش به شما</button>
+    </div>
+    <div class="cl" id="amtLabel">مبلغ (تومان)</div>
+    <input class="ci" id="ca" type="number" placeholder="مبلغ را وارد کنید" oninput="cCalc('amt')" />
+    <div class="cl" id="gramLabel">یا گرم</div>
+    <input class="ci" id="cg" type="number" placeholder="گرم را وارد کنید" oninput="cCalc('gram')" />
+    <div class="cr">
+      <div class="crl" id="resLabel">معادل به گرم</div>
+      <div class="crv" id="crv">—</div>
+    </div>
+    <div class="cbs">
+      <button class="cx" onclick="closeC()">بستن</button>
+      <button class="cc" id="reqBtn" onclick="reqTx()">ارسال درخواست</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const SU='https://umqzhmeewbnizrexynxb.supabase.co';
+const SK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVtcXpobWVld2JuaXpyZXh5bnhiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc3OTk2MjUsImV4cCI6MjA5MzM3NTYyNX0.v47zF6asX67hBG88kfgZ2zxkacc889S1WrA0HXIl-mo';
+const MTG=4.3318; // هر مثقال = ۴.۳۳۱۸ گرم
+const STEP={abshode:10000,sekke:50000,noghre:10000};
+
+// کالاهایی که قیمت به گرم نمایش داده میشه
+const GRAM_ITEMS=['abshode_farda','abshode_pas','sajme_ir','sajme_kh'];
+
+const SECS=[
+  {ti:'آبشده',cat:'abshode',items:[
+    {n:'آبشده نقد فردا',k:'abshode_farda'},
+    {n:'آبشده نقد پس فردا',k:'abshode_pas'},
+  ]},
+  {ti:'مسکوکات',cat:'sekke',items:[
+    {n:'سکه تمام 86',k:'sekke_tamam'},
+    {n:'نیم سکه 86',k:'nim_sekke'},
+    {n:'ربع سکه 86',k:'rob_sekke'},
+    {n:'سکه گرمی سالم',k:'sekke_gerami',ns:true},
+    {n:'سکه تاریخ پایین',k:'sekke_tarikh'},
+    {n:'نیم سکه تاریخ پایین',k:'nim_tarikh'},
+    {n:'ربع سکه تاریخ پایین',k:'rob_tarikh'},
+  ]},
+  {ti:'نقره',cat:'noghre',items:[
+    {n:'ساجمه نقره ایرانی',k:'sajme_ir'},
+    {n:'ساجمه نقره خارجی',k:'sajme_kh'},
+    {n:'شمش نادر 999.9',k:'shamsh_nadir'},
+    {n:'شمش نقره اماراتی 999',k:'shamsh_emarat'},
+    {n:'شمش 50 گرمی نقره 999',k:'shamsh_50'},
+    {n:'شمش 100 گرمی نقره 999',k:'shamsh_100'},
+  ]}
+];
+const IM={};for(const s of SECS)for(const i of s.items)IM[i.k]=i;
+
+let prices={},role=null,cust=null,lTab='c',cKey=null,cTab='buy';
+let aPwd=localStorage.getItem('ag_ap')||'admin1234';
+let timerIntervals={};
+let pollInterval=null;
+
+// ── API ──
+async function sbG(t,f=''){
+  try{const r=await fetch(`${SU}/rest/v1/${t}${f?'?'+f:''}`,{headers:{'apikey':SK,'Authorization':'Bearer '+SK,'Cache-Control':'no-cache'}});return r.json();}
+  catch(e){return[];}
+}
+async function sbP(t,d){
+  try{return fetch(`${SU}/rest/v1/${t}`,{method:'POST',headers:{'apikey':SK,'Authorization':'Bearer '+SK,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(d)});}
+  catch(e){return null;}
+}
+async function sbPa(t,f,d){
+  try{return fetch(`${SU}/rest/v1/${t}?${f}`,{method:'PATCH',headers:{'apikey':SK,'Authorization':'Bearer '+SK,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(d)});}
+  catch(e){return null;}
+}
+async function sbD(t,f){
+  try{await fetch(`${SU}/rest/v1/${t}?${f}`,{method:'DELETE',headers:{'apikey':SK,'Authorization':'Bearer '+SK}});}
+  catch(e){}
+}
+
+async function loadP(){
+  const rows=await sbG('prices');
+  prices={};
+  for(const r of rows)prices[r.id]={buy:r.buy,sell:r.sell};
+}
+
+// ── تاریخ شمسی ──
+function toJalali(date){
+  const d=new Date(date);
+  try{return new Intl.DateTimeFormat('fa-IR',{year:'numeric',month:'long',day:'numeric'}).format(d);}
+  catch(e){return d.toLocaleDateString('fa-IR');}
+}
+function toJalaliShort(date){
+  const d=new Date(date);
+  try{return new Intl.DateTimeFormat('fa-IR',{year:'numeric',month:'2-digit',day:'2-digit'}).format(d);}
+  catch(e){return d.toLocaleDateString('fa-IR');}
+}
+function timeStr(date){return new Date(date).toLocaleTimeString('fa-IR');}
+function dayKey(date){return toJalaliShort(date);}
+
+// ── فرمت عدد ──
+function fmt(n){
+  if(n===null||n===undefined)return'—';
+  return Number(n).toLocaleString('fa-IR');
+}
+function fmtG(n){
+  if(n===null||n===undefined)return'—';
+  return Number(n.toFixed(3)).toLocaleString('fa-IR');
+}
+
+// قیمت مثقال → گرم
+function toG(pm){return pm/MTG;}
+// قیمت گرم → مثقال
+function toM(pg){return pg*MTG;}
+
+function isGramItem(k){return GRAM_ITEMS.includes(k);}
+
+// ── LOGIN ──
+function setLTab(t){
+  lTab=t;
+  document.getElementById('cf').style.display=t==='c'?'':'none';
+  document.getElementById('af').style.display=t==='a'?'':'none';
+  document.querySelectorAll('.ltab').forEach((el,i)=>el.classList.toggle('a',(i===0)===(t==='c')));
+}
+
+async function doLogin(){
+  const err=document.getElementById('le');err.textContent='';
+  if(lTab==='a'){
+    const p=document.getElementById('ap').value.trim();
+    if(p===aPwd){role='admin';await startApp();}
+    else err.textContent='رمز مدیر اشتباه است';
+  } else {
+    const u=document.getElementById('cu').value.trim();
+    const p=document.getElementById('cp').value.trim();
+    if(!u||!p){err.textContent='نام کاربری و رمز را وارد کنید';return;}
+    showL(true);
+    const rows=await sbG('customers',`username=eq.${encodeURIComponent(u)}&password=eq.${encodeURIComponent(p)}`);
+    showL(false);
+    if(rows&&rows.length>0){role='customer';cust=rows[0];await startApp();}
+    else err.textContent='نام کاربری یا رمز اشتباه است';
+  }
+}
+
+function doLogout(){
+  role=null;cust=null;
+  if(pollInterval)clearInterval(pollInterval);
+  Object.values(timerIntervals).forEach(clearInterval);
+  timerIntervals={};
+  document.getElementById('app').style.display='none';
+  document.getElementById('ls').style.display='flex';
+  document.getElementById('ap').value='';
+  document.getElementById('cu').value='';
+  document.getElementById('cp').value='';
+}
+
+async function startApp(){
+  showL(true);await loadP();showL(false);
+  document.getElementById('ls').style.display='none';
+  document.getElementById('app').style.display='flex';
+  document.getElementById('anav').style.display=role==='admin'?'flex':'none';
+  document.getElementById('cnav').style.display=role==='customer'?'flex':'none';
+  document.getElementById('hs').textContent=role==='admin'?'پنل مدیریت':'خوش آمدید، '+cust.name;
+  sv('prices',document.querySelector(role==='admin'?'#anav .nt':'#cnav .nt'));
+  document.getElementById('ut').textContent=new Date().toLocaleTimeString('fa-IR');
+  // poll هر ۳۰ ثانیه برای معاملات جدید
+  if(role==='admin'){
+    pollInterval=setInterval(checkPending,30000);
+  }
+}
+
+async function checkPending(){
+  const rows=await sbG('transactions','status=eq.pending&select=id');
+  const btn=document.getElementById('txBtn');
+  if(btn){
+    if(rows&&rows.length>0) btn.innerHTML=`معاملات <span class="badge">${rows.length}</span>`;
+    else btn.textContent='معاملات';
+  }
+}
+
+function sv(v,btn){
+  ['vp','ve','vtx','vc','vmt'].forEach(x=>document.getElementById(x).style.display='none');
+  document.querySelectorAll('.nt').forEach(t=>t.classList.remove('a'));
+  if(btn)btn.classList.add('a');
+  if(v==='prices'){document.getElementById('vp').style.display='';rP();}
+  else if(v==='edit'){document.getElementById('ve').style.display='';rE();}
+  else if(v==='tx'){document.getElementById('vtx').style.display='';rATx();}
+  else if(v==='custs'){document.getElementById('vc').style.display='';rC();}
+  else if(v==='mytx'){document.getElementById('vmt').style.display='';rMTx();}
+}
+
+// ── صفحه قیمت ──
+function rP(){
+  let h='';
+  if(role==='customer')h+=`<div style="font-size:11px;color:var(--mu);text-align:center;margin-bottom:8px">روی هر کالا بزنید برای محاسبه و ارسال درخواست معامله</div>`;
+  for(const sec of SECS){
+    h+=`<div class="sec"><div class="sh"><span>${sec.ti}</span><span class="sd"></span></div>`;
+    h+=`<div class="ch c3"><span>کالا</span><span>خرید</span><span>فروش</span></div>`;
+    for(const item of sec.items){
+      const d=prices[item.k]||{buy:0,sell:0};
+      let bv,sv2;
+      if(isGramItem(item.k)){
+        // قیمت گرم
+        bv=fmt(Math.round(toG(d.buy)))+' گرم';
+        sv2=d.sell?fmt(Math.round(toG(d.sell)))+' گرم':null;
+      } else {
+        // قیمت عددی (مثقال)
+        bv=fmt(d.buy);
+        sv2=d.sell?fmt(d.sell):null;
+      }
+      h+=`<div class="pr c3" onclick="openC('${item.k}')">`;
+      h+=`<div class="rn">${item.n}</div>`;
+      h+=`<div class="pi b">${bv}</div>`;
+      if(item.ns||sv2===null)h+=`<div class="pi n">خرید ندارم</div>`;
+      else h+=`<div class="pi s">${sv2}</div>`;
+      h+=`</div>`;
+    }
+    h+=`</div>`;
+  }
+  document.getElementById('vp').innerHTML=h;
+}
+
+// ── ماشین حساب ──
+function openC(k){
+  cKey=k;cTab='buy';
+  document.getElementById('cti').textContent=IM[k].n;
+  updCI();
+  document.getElementById('ca').value='';
+  document.getElementById('cg').value='';
+  document.getElementById('crv').textContent='—';
+  document.querySelectorAll('.mt').forEach((t,i)=>t.classList.toggle('a',i===0));
+  // نمایش فیلد گرم فقط برای کالاهای گرمی
+  document.getElementById('gramLabel').style.display=isGramItem(k)?'':'none';
+  document.getElementById('cg').style.display=isGramItem(k)?'':'none';
+  document.getElementById('cm').classList.add('op');
+  setTimeout(()=>document.getElementById('ca').focus(),300);
+}
+
+function updCI(){
+  const d=prices[cKey]||{};
+  const pm=cTab==='buy'?d.buy:d.sell;
+  if(isGramItem(cKey)){
+    const pg=Math.round(toG(pm));
+    document.getElementById('cpi').textContent='قیمت هر گرم: '+fmt(pg)+' تومان';
+    document.getElementById('resLabel').textContent='معادل به گرم';
+  } else {
+    document.getElementById('cpi').textContent='قیمت: '+fmt(pm)+' تومان';
+    document.getElementById('resLabel').textContent='مبلغ کل';
+  }
+}
+
+function setCT(t,btn){
+  cTab=t;
+  document.querySelectorAll('.mt').forEach(el=>el.classList.remove('a'));
+  if(btn)btn.classList.add('a');
+  updCI();
+  document.getElementById('ca').value='';
+  document.getElementById('cg').value='';
+  document.getElementById('crv').textContent='—';
+}
+
+function cCalc(src){
+  const d=prices[cKey]||{};
+  const pm=cTab==='buy'?d.buy:d.sell;
+  if(isGramItem(cKey)){
+    const pg=toG(pm);
+    if(src==='amt'){
+      const amt=parseFloat(document.getElementById('ca').value);
+      if(!amt||!pg){document.getElementById('crv').textContent='—';return;}
+      const g=(amt/pg).toFixed(3);
+      document.getElementById('cg').value='';
+      document.getElementById('crv').textContent=fmtG(parseFloat(g))+' گرم';
+    } else {
+      const g=parseFloat(document.getElementById('cg').value);
+      if(!g||!pg){document.getElementById('crv').textContent='—';return;}
+      const amt=Math.round(g*pg);
+      document.getElementById('ca').value='';
+      document.getElementById('crv').textContent=fmt(amt)+' تومان';
+    }
+  } else {
+    // سکه: فقط مبلغ
+    const amt=parseFloat(document.getElementById('ca').value);
+    if(!amt||!pm){document.getElementById('crv').textContent='—';return;}
+    document.getElementById('crv').textContent=fmt(Math.round(amt))+' تومان';
+  }
+}
+
+function closeC(){document.getElementById('cm').classList.remove('op');}
+
+async function reqTx(){
+  if(role!=='customer'){closeC();return;}
+  const d=prices[cKey]||{};
+  const pm=cTab==='buy'?d.buy:d.sell;
+  let amt,grams,pg;
+  if(isGramItem(cKey)){
+    pg=toG(pm);
+    const amtV=parseFloat(document.getElementById('ca').value);
+    const gramV=parseFloat(document.getElementById('cg').value);
+    if(gramV){grams=gramV;amt=Math.round(gramV*pg);}
+    else if(amtV){amt=amtV;grams=parseFloat((amtV/pg).toFixed(3));}
+    else{showToast('مبلغ یا گرم را وارد کنید');return;}
+  } else {
+    amt=parseFloat(document.getElementById('ca').value);
+    if(!amt||amt<=0){showToast('مبلغ را وارد کنید');return;}
+    pg=pm;grams=null;
+  }
+  await sbP('transactions',{
+    customer_id:cust.id,
+    item_key:cKey,
+    item_name:IM[cKey].n,
+    amount:Math.round(amt),
+    grams:grams,
+    type:cTab,
+    price_at_time:pm,
+    price_per_gram:isGramItem(cKey)?Math.round(pg):null,
+    status:'pending'
+  });
+  showToast('درخواست ارسال شد — منتظر تایید مدیر باشید ✓');
+  closeC();
+}
+
+// ── ویرایش قیمت ──
+function rE(){
+  let h='';
+  for(const sec of SECS){
+    const step=STEP[sec.cat];const sf=Number(step).toLocaleString('fa-IR');
+    h+=`<div class="sec"><div class="sh"><span>${sec.ti}</span><span style="font-size:10px;opacity:.75">گام: ${sf}</span></div>`;
+    for(const item of sec.items){
+      const d=prices[item.k]||{buy:0,sell:null};
+      h+=`<div class="ai"><div class="ain">${item.n}</div>`;
+      h+=`<div style="font-size:10px;color:var(--mu);margin-bottom:6px">ورود به مثقال${isGramItem(item.k)?' — نمایش به گرم':''}</div>`;
+      h+=`<div class="fr">`;
+      h+=`<div><div class="fl">خرید (مثقال)</div><input class="ainp" id="ib_${item.k}" type="number" value="${d.buy||''}" /></div>`;
+      if(!item.ns)h+=`<div><div class="fl">فروش (مثقال)</div><input class="ainp" id="is_${item.k}" type="number" value="${d.sell||''}" /></div>`;
+      else h+=`<div><div class="fl">فروش</div><div class="nsb">خرید ندارم</div></div>`;
+      h+=`</div>`;
+      h+=`<div class="ar"><span class="ala">تنظیم سریع:</span>`;
+      h+=`<button class="abtn m" onclick="adj('${item.k}',-${step})">−</button>`;
+      h+=`<span class="ast">${sf}</span>`;
+      h+=`<button class="abtn p" onclick="adj('${item.k}',${step})">+</button>`;
+      h+=`</div></div>`;
+    }
+    h+=`</div>`;
+  }
+  h+=`<div class="sw"><button class="sb2" onclick="subAll()">ثبت همه قیمت‌ها برای همه مشتریان</button></div>`;
+  h+=`<div class="ps"><div class="pti">تغییر رمز مدیر</div><div class="pr2"><span class="pl">رمز جدید:</span><input class="pi2" id="nap" type="password" placeholder="رمز جدید مدیر" /></div><button class="psb" onclick="chPwd()">ذخیره رمز مدیر</button></div>`;
+  document.getElementById('ve').innerHTML=h;
+}
+
+function rdIn(){
+  for(const sec of SECS)for(const item of sec.items){
+    const be=document.getElementById('ib_'+item.k);
+    const se=document.getElementById('is_'+item.k);
+    if(!prices[item.k])prices[item.k]={buy:0,sell:null};
+    if(be){const v=parseInt(be.value);if(!isNaN(v))prices[item.k].buy=v;}
+    if(se){const v=parseInt(se.value);if(!isNaN(v))prices[item.k].sell=v;}
+  }
+}
+function wrIn(){
+  for(const sec of SECS)for(const item of sec.items){
+    const be=document.getElementById('ib_'+item.k);
+    const se=document.getElementById('is_'+item.k);
+    if(be&&prices[item.k])be.value=prices[item.k].buy||'';
+    if(se&&prices[item.k])se.value=prices[item.k].sell||'';
+  }
+}
+function adj(k,d){rdIn();if(prices[k].buy!==null)prices[k].buy=Math.max(0,prices[k].buy+d);if(prices[k].sell!==null)prices[k].sell=Math.max(0,prices[k].sell+d);wrIn();}
+
+async function subAll(){
+  rdIn();showL(true);
+  await Promise.all(Object.keys(prices).map(k=>sbPa('prices','id=eq.'+k,{buy:prices[k].buy,sell:prices[k].sell,updated_at:new Date().toISOString()})));
+  showL(false);
+  showToast('قیمت‌ها برای همه مشتریان ثبت شد ✓');
+  document.getElementById('ut').textContent=new Date().toLocaleTimeString('fa-IR');
+}
+
+function chPwd(){
+  const p=document.getElementById('nap').value.trim();
+  if(!p){showToast('رمز را وارد کنید');return;}
+  aPwd=p;localStorage.setItem('ag_ap',p);
+  showToast('رمز مدیر ذخیره شد ✓');
+  document.getElementById('nap').value='';
+}
+
+// ── معاملات مدیر ──
+async function rATx(){
+  showL(true);
+  const [rows,custs]=await Promise.all([
+    sbG('transactions','order=created_at.desc&limit=200'),
+    sbG('customers')
+  ]);
+  showL(false);
+  const cm={};for(const c of custs)cm[c.id]=c.name;
+  const today=new Date();today.setHours(0,0,0,0);
+  const todayC=rows.filter(r=>new Date(r.created_at)>=today).length;
+  const pendC=rows.filter(r=>r.status==='pending').length;
+
+  let h=`<div class="tsg">
+    <div class="tsc"><div class="tsn">${pendC}</div><div class="tsl">در انتظار تایید</div></div>
+    <div class="tsc"><div class="tsn">${todayC}</div><div class="tsl">معامله امروز</div></div>
+  </div>`;
+
+  if(rows.length===0){h+=`<div class="te">هنوز معامله‌ای ثبت نشده</div>`;}
+  else {
+    // گروه‌بندی بر اساس روز شمسی
+    let lastDay='';
+    for(const tx of rows){
+      const dKey=dayKey(tx.created_at);
+      if(dKey!==lastDay){
+        h+=`<div class="daysep">📅 ${toJalali(tx.created_at)}</div>`;
+        lastDay=dKey;
+      }
+      const stL=tx.status==='pending'?'در انتظار':tx.status==='approved'?'تایید شده':'رد شده';
+      const stC=tx.status==='pending'?'pending':tx.status==='approved'?'buy':'rejected';
+      const created=new Date(tx.created_at);
+      const expireAt=new Date(created.getTime()+60000); // ۱ دقیقه
+      const remaining=Math.max(0,Math.round((expireAt-new Date())/1000));
+
+      h+=`<div class="tc" id="tc_${tx.id}">`;
+      h+=`<div class="tt"><span class="tn">${tx.item_name}</span><span class="tty ${stC}">${stL}</span></div>`;
+      h+=`<div style="font-size:12px;font-weight:600;color:var(--gd);margin-bottom:4px">${cm[tx.customer_id]||'نامشخص'}</div>`;
+      h+=`<div class="td">مبلغ: ${fmt(tx.amount)} تومان`;
+      if(tx.grams)h+=` | معادل: ${fmtG(tx.grams)} گرم`;
+      if(tx.price_per_gram)h+=` | هر گرم: ${fmt(tx.price_per_gram)}`;
+      h+=`</div>`;
+      h+=`<div class="td">نوع: ${tx.type==='buy'?'خرید از مشتری':'فروش به مشتری'}</div>`;
+      h+=`<div class="tda">${timeStr(tx.created_at)}</div>`;
+
+      if(tx.status==='pending'){
+        if(remaining>0){
+          h+=`<div class="timer" id="tmr_${tx.id}">⏱ ${remaining} ثانیه مانده</div>`;
+        } else {
+          h+=`<div class="timer" style="color:#c0392b">⏱ منقضی شده</div>`;
+        }
+        h+=`<div class="tac">
+          <button class="tapb" onclick="appTx('${tx.id}')">✓ تایید</button>
+          <button class="tarb" onclick="rejTx('${tx.id}')">✗ رد</button>
+        </div>`;
+      }
+      h+=`</div>`;
+    }
+  }
+  document.getElementById('vtx').innerHTML=h;
+
+  // شروع تایمرها
+  Object.values(timerIntervals).forEach(clearInterval);
+  timerIntervals={};
+  for(const tx of rows){
+    if(tx.status==='pending'){
+      const el=document.getElementById('tmr_'+tx.id);
+      if(!el)continue;
+      const created=new Date(tx.created_at);
+      const expireAt=new Date(created.getTime()+60000);
+      timerIntervals[tx.id]=setInterval(()=>{
+        const rem=Math.max(0,Math.round((expireAt-new Date())/1000));
+        const el2=document.getElementById('tmr_'+tx.id);
+        if(el2){
+          if(rem>0)el2.textContent=`⏱ ${rem} ثانیه مانده`;
+          else{el2.textContent='⏱ منقضی شده';el2.style.color='#c0392b';clearInterval(timerIntervals[tx.id]);}
+        } else {
+          clearInterval(timerIntervals[tx.id]);
+        }
+      },1000);
+    }
+  }
+
+  // آپدیت badge
+  const btn=document.getElementById('txBtn');
+  if(btn){
+    if(pendC>0)btn.innerHTML=`معاملات <span class="badge">${pendC}</span>`;
+    else btn.textContent='معاملات';
+  }
+}
+
+async function appTx(id){
+  await sbPa('transactions','id=eq.'+id,{status:'approved'});
+  showToast('معامله تایید شد ✓');
+  clearInterval(timerIntervals[id]);
+  rATx();
+}
+async function rejTx(id){
+  await sbPa('transactions','id=eq.'+id,{status:'rejected'});
+  showToast('معامله رد شد');
+  clearInterval(timerIntervals[id]);
+  rATx();
+}
+
+// ── مشتریان ──
+async function rC(){
+  showL(true);const custs=await sbG('customers','order=created_at.asc');showL(false);
+  let h=`<div class="ch2"><span class="ct">مشتریان (${custs.length} نفر)</span><button class="acb" onclick="togAF()">+ افزودن</button></div>`;
+  h+=`<div id="af2" style="display:none"><div class="fs"><div class="fti">افزودن مشتری جدید</div>
+    <div class="fro"><div class="fla">نام مشتری</div><input class="fin" id="nn" placeholder="نام و نام خانوادگی" /></div>
+    <div class="fro"><div class="fla">نام کاربری</div><input class="fin" id="nu" placeholder="مثلاً ali123" /></div>
+    <div class="fro"><div class="fla">رمز عبور</div><input class="fin" id="np" placeholder="رمز عبور" /></div>
+    <button class="fb" onclick="addC()">ثبت مشتری</button></div></div>`;
+  for(const c of custs){
+    h+=`<div class="cc2"><div>
+      <div class="cn">${c.name}</div>
+      <div class="cu2">کاربری: ${c.username}</div>
+      <div class="cpw">رمز: ${c.password}</div>
+    </div><button class="db" onclick="delC('${c.id}')">حذف</button></div>`;
+  }
+  document.getElementById('vc').innerHTML=h;
+}
+function togAF(){const f=document.getElementById('af2');if(f)f.style.display=f.style.display==='none'?'':'none';}
+async function addC(){
+  const n=document.getElementById('nn').value.trim();
+  const u=document.getElementById('nu').value.trim();
+  const p=document.getElementById('np').value.trim();
+  if(!n||!u||!p){showToast('همه فیلدها را پر کنید');return;}
+  const r=await sbP('customers',{name:n,username:u,password:p});
+  if(r&&r.status===201){showToast('مشتری اضافه شد ✓');rC();}
+  else showToast('خطا: نام کاربری تکراری است');
+}
+async function delC(id){
+  if(!confirm('این مشتری حذف شود؟'))return;
+  await sbD('customers','id=eq.'+id);
+  showToast('مشتری حذف شد');rC();
+}
+
+// ── معاملات مشتری ──
+async function rMTx(){
+  if(!cust)return;
+  showL(true);
+  const rows=await sbG('transactions',`customer_id=eq.${cust.id}&order=created_at.desc`);
+  showL(false);
+  const today=new Date();today.setHours(0,0,0,0);
+  const todayC=rows.filter(r=>new Date(r.created_at)>=today).length;
+  let h=`<div class="tsc" style="margin-bottom:12px;padding:14px">
+    <div class="tsn">${todayC}</div>
+    <div class="tsl">معامله امروز | کل: ${rows.length}</div>
+  </div>`;
+  if(rows.length===0)h+=`<div class="te">هنوز معامله‌ای ثبت نشده</div>`;
+  else {
+    let lastDay='';
+    for(const tx of rows){
+      const dKey=dayKey(tx.created_at);
+      if(dKey!==lastDay){
+        h+=`<div class="daysep">📅 ${toJalali(tx.created_at)}</div>`;
+        lastDay=dKey;
+      }
+      const stL=tx.status==='pending'?'در انتظار تایید':tx.status==='approved'?'تایید شده':'رد شده';
+      const stC=tx.status==='pending'?'pending':tx.status==='approved'?'buy':'rejected';
+      h+=`<div class="tc">
+        <div class="tt"><span class="tn">${tx.item_name}</span><span class="tty ${stC}">${stL}</span></div>
+        <div class="td">مبلغ: ${fmt(tx.amount)} تومان`;
+      if(tx.grams)h+=` | معادل: ${fmtG(tx.grams)} گرم`;
+      h+=`</div><div class="td">نوع: ${tx.type==='buy'?'خرید':'فروش'}</div>
+        <div class="tda">${timeStr(tx.created_at)}</div>
+      </div>`;
+    }
+  }
+  document.getElementById('vmt').innerHTML=h;
+}
+
+function showL(v){
+  let el=document.getElementById('lov');
+  if(v&&!el){el=document.createElement('div');el.id='lov';el.className='lov';el.textContent='در حال بارگذاری...';document.body.appendChild(el);}
+  else if(!v&&el)el.remove();
+}
+function showToast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('on');
+  setTimeout(()=>t.classList.remove('on'),2800);
+}
+document.getElementById('cm').addEventListener('click',function(e){if(e.target===this)closeC();});
+</script>
+</body>
+</html>
